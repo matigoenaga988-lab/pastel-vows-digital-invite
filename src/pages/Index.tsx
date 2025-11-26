@@ -1,13 +1,43 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import Story from "@/components/Story";
+import Gallery from "@/components/Gallery";
+import Countdown from "@/components/Countdown";
+import Location from "@/components/Location";
+import RSVP from "@/components/RSVP";
+import SongRequest from "@/components/SongRequest";
+import ThankYou from "@/components/ThankYou";
+import MusicPlayer from "@/components/MusicPlayer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen bg-background">
+      {/* Portada con foto, nombres y fecha */}
+      <Hero />
+      
+      {/* Historia o frase especial */}
+      <Story />
+      
+      {/* Galería de imágenes */}
+      <Gallery />
+      
+      {/* Cuenta regresiva */}
+      <Countdown />
+      
+      {/* Ubicación del evento con mapa */}
+      <Location />
+      
+      {/* Formulario de confirmación RSVP */}
+      <RSVP />
+      
+      {/* Sugerencias de canciones */}
+      <SongRequest />
+      
+      {/* Agradecimiento final */}
+      <ThankYou />
+      
+      {/* Reproductor de música flotante */}
+      <MusicPlayer />
+    </main>
   );
 };
 
