@@ -2,59 +2,46 @@ import { CheckCircle2, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 
 const RSVP = () => {
-  // Tu URL
-  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScZLz2EKKo6Ods7P0TH3YBhGMR-5O6yPkdAo1icaCpzLZDJCw/viewform";
+  const googleFormUrl = "https://docs.google.com/forms/..."; // Tu URL real
 
   return (
-    // CAMBIO 1: Fondo de la sección más oscuro (bg-stone-100 o secondary/30) para que la tarjeta blanca resalte
-    <section className="py-24 px-4 bg-secondary/30"> 
-      
-      {/* CAMBIO 2: La tarjeta ahora tiene 'bg-background' (blanco usualmente) y una sombra muy fuerte (shadow-2xl) */}
-      <div className="relative max-w-2xl mx-auto bg-background p-8 md:p-12 rounded-xl shadow-2xl animate-scale-in border border-border">
+    <section className="py-20 px-4 relative">
+      <div className="max-w-3xl mx-auto text-center animate-fade-in">
         
-        {/* CAMBIO 3: Marco decorativo MÁS GRUESO y visible */}
-        {/* border-2 (grosor) y border-primary (color solido, sin transparencia por ahora) */}
-        <div className="absolute inset-3 border-2 border-primary rounded-lg pointer-events-none opacity-50" />
-        
-        {/* Esquinas decorativas extra para asegurar que se vea el estilo "Invitación" */}
-        <div className="absolute top-3 left-3 w-4 h-4 border-t-4 border-l-4 border-primary pointer-events-none" />
-        <div className="absolute top-3 right-3 w-4 h-4 border-t-4 border-r-4 border-primary pointer-events-none" />
-        <div className="absolute bottom-3 left-3 w-4 h-4 border-b-4 border-l-4 border-primary pointer-events-none" />
-        <div className="absolute bottom-3 right-3 w-4 h-4 border-b-4 border-r-4 border-primary pointer-events-none" />
-
-        <div className="relative z-10 text-center pt-4">
-          <CheckCircle2 className="w-12 h-12 mx-auto mb-6 text-primary" />
+        {/* Tarjeta pequeña estilo nota */}
+        <div className="paper-texture bg-card p-10 rounded-lg shadow-lg border border-stone-200 relative max-w-lg mx-auto">
           
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Confirmación de Asistencia
+          <div className="gold-border-inset"></div>
+          
+          <h2 className="font-dancing text-5xl text-[hsl(var(--gold-dark))] mb-4">
+            RSVP
           </h2>
           
-          <div className="w-16 h-1 bg-primary mx-auto my-6 rounded-full"></div>
-          
-          <p className="text-lg text-muted-foreground mb-8">
-            Por favor, confirmanos tu asistencia antes del 1 de Mayo.
-          </p>
-          
-          <p className="font-medium text-foreground mb-8 italic">
-            "Esperamos contar contigo en este día especial"
+          <p className="font-serif text-lg text-muted-foreground mb-8 italic">
+            "Esperamos contar con su presencia para compartir este día inolvidable"
           </p>
 
-          <div className="mt-8 pb-4">
+          <p className="text-sm uppercase tracking-widest text-muted-foreground mb-8">
+            Por favor confirmar antes del 1 de Mayo
+          </p>
+
+          {/* EL BOTÓN DE LACRE (WAX SEAL) */}
+          <div className="flex justify-center">
             <a 
               href={googleFormUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block hover:-translate-y-1 transition-transform duration-300"
+              className="inline-block"
             >
-              <Button 
-                size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 text-lg shadow-lg hover:shadow-xl rounded-full"
-              >
-                Confirmar Asistencia
-                <ExternalLink className="w-5 h-5 ml-2" />
-              </Button>
+              <button className="wax-seal-btn w-20 h-20 md:w-24 md:h-24 rounded-full flex flex-col items-center justify-center p-2 group">
+                <span className="font-maguntia text-2xl md:text-3xl opacity-90">Sí</span>
+                <span className="text-[10px] md:text-xs font-serif uppercase tracking-widest mt-1 opacity-80">
+                  Confirmar
+                </span>
+              </button>
             </a>
           </div>
+          
         </div>
       </div>
     </section>

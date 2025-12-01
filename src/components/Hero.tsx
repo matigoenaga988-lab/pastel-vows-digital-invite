@@ -1,57 +1,66 @@
-import { Heart } from "lucide-react";
-import heroImage from "@/assets/hero-wedding.jpg";
-
+import { ChevronDown } from "lucide-react";
+import heroImage from "../assets/hero-wedding.jpg";
 const Hero = () => {
+  // Usamos una imagen de stock de alta calidad de un arco de bodas para asegurar que se vea perfecto
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-start overflow-hidden bg-background">
+      
+      {/* 1. IMAGEN PRINCIPAL (Arco de Rosas) */}
+      {/* Ocupa un 70% de la altura para impacto inmediato */}
+      <div className="relative w-full h-[70vh] overflow-hidden shadow-lg">
+        <div className="absolute inset-0 bg-black/10 z-10" /> {/* Oscurecimiento sutil */}
+        <img 
+          src={heroImage} 
+          alt="Arco de rosas boda" 
+          className="w-full h-full object-cover object-center animate-scale-in duration-[2000ms]"
+        />
+        
+        {/* Degradado inferior para conectar suavemente con la tarjeta */}
+        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[hsl(var(--background))] to-transparent z-20" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 animate-fade-in-up">
-        <Heart className="w-16 h-16 mx-auto mb-8 text-primary animate-pulse-soft" />
-        
-        {/* EDITAR: Nombres de los novios */}
-        <h1 className="font-dancing text-6xl md:text-8xl font-bold text-foreground mb-4">
-          Ale & carla
-        </h1>
-        
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <div className="h-px w-16 bg-primary" />
-          <Heart className="w-6 h-6 text-primary" />
-          <div className="h-px w-16 bg-primary" />
-        </div>
-        
-        {/* EDITAR: Fecha del casamiento */}
-        <p className="text-2xl md:text-3xl text-foreground mb-2 font-dancing">
-          15 de Diciembre, 2025
-        </p>
-        
-        {/* EDITAR: Lugar del evento */}
-        <p className="text-xl md:text-2xl text-muted-foreground font-light">
-          Club Nautico Mar del Plata, Buenos Aires, Argentina
-        </p>
-        
-        <div className="mt-12 animate-float">
-          <div className="inline-block bg-card/80 backdrop-blur-sm px-8 py-4 rounded-full shadow-lg">
-            <p className="text-foreground font-medium">
-              ¡Nos casamos y queremos que seas parte!
+      {/* 2. TARJETA DE TEXTO FLOTANTE */}
+      {/* Se superpone a la imagen (margin-top negativo) */}
+      <div className="relative z-30 -mt-32 px-4 w-full max-w-2xl animate-fade-in delay-300">
+        <div className="bg-[hsl(var(--card))] shadow-2xl p-8 md:p-12 text-center rounded-sm card-border relative">
+          
+          {/* Adorno Floral Superior (CSS Ribbon) */}
+          <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+             <div className="ribbon-gold shadow-md">
+                ¡Nos Casamos!
+             </div>
+          </div>
+
+          <div className="space-y-6 pt-6">
+            <p className="font-serif text-muted-foreground uppercase tracking-[0.2em] text-sm md:text-base">
+              Estás invitado a la boda de
+            </p>
+
+            <h1 className="font-dancing text-6xl md:text-8xl text-[hsl(var(--primary))] leading-tight drop-shadow-sm">
+              Ana & Carlos
+            </h1>
+
+            <div className="flex items-center justify-center gap-4 py-2">
+              <div className="h-[1px] w-12 bg-[hsl(var(--gold-medium))]" />
+              <p className="font-serif text-xl md:text-2xl text-[hsl(var(--foreground))] italic">
+                15 . 12 . 2025
+              </p>
+              <div className="h-[1px] w-12 bg-[hsl(var(--gold-medium))]" />
+            </div>
+
+            <p className="font-serif text-muted-foreground text-sm uppercase tracking-wider">
+              Mar del Plata, Argentina
             </p>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-        </div>
+      {/* Indicador de scroll */}
+      <div className="mt-8 mb-8 animate-bounce opacity-50">
+        <ChevronDown className="w-8 h-8 text-[hsl(var(--gold-dark))]" />
       </div>
+
     </section>
   );
 };
