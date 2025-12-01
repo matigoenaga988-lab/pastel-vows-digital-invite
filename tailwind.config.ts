@@ -14,7 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        boda: ['"Great Vibes"', 'cursive'],
+        dancing: ['"Dancing Script"', 'cursive'], 
+        // Clase 'font-maguntia'
+        maguntia: ['"UnifrakturMaguntia"', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",

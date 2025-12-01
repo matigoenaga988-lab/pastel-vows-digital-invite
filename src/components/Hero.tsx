@@ -17,7 +17,7 @@ const Hero = () => {
         <Heart className="w-16 h-16 mx-auto mb-8 text-primary animate-pulse-soft" />
         
         {/* EDITAR: Nombres de los novios */}
-        <h1 className="font-serif text-6xl md:text-8xl font-bold text-foreground mb-4">
+        <h1 className="font-dancing text-6xl md:text-8xl font-bold text-foreground mb-4">
           Ale & carla
         </h1>
         
@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
         
         {/* EDITAR: Fecha del casamiento */}
-        <p className="text-2xl md:text-3xl text-foreground mb-2 font-serif">
+        <p className="text-2xl md:text-3xl text-foreground mb-2 font-dancing">
           15 de Diciembre, 2025
         </p>
         
