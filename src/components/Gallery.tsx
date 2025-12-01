@@ -7,7 +7,6 @@ import gallery3 from "@/assets/gallery3.jpeg";
 
 const Gallery = () => {
   const images = [gallery1, gallery2, gallery3];
-  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextImage = () => {
@@ -19,81 +18,82 @@ const Gallery = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-accent/10">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in">
-          <Camera className="w-12 h-12 mx-auto mb-6 text-primary" />
+    <section className="py-20 px-4 relative">
+      <div className="max-w-5xl mx-auto">
+        
+        {/* Contenedor estilo 'Álbum' */}
+        <div className="relative animate-fade-in">
           
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Nuestros Momentos
-          </h2>
-          
-          <p className="text-lg text-muted-foreground">
-            Algunos de los recuerdos que hemos creado juntos
-          </p>
-        </div>
-
-        {/* Slider */}
-        <div className="relative max-w-4xl mx-auto animate-scale-in">
-          
-          {/* Contenedor de la imagen */}
-          {/* Volví al aspect-video o 3/2 para mantener la forma del marco consistente */}
-          <div className="relative aspect-video md:aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl bg-black/5">
-            
-            {/* TRUCO DE DISEÑO: Imagen de fondo borrosa */}
-            {/* Esto rellena los espacios vacíos a los costados de la foto vertical */}
-            <div className="absolute inset-0">
-                <img
-                  key={`bg-${currentIndex}`} // key ayuda a reiniciar la animación
-                  src={images[currentIndex]}
-                  alt="fondo borroso"
-                  className="w-full h-full object-cover blur-2xl opacity-50 scale-110"
-                />
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center p-3 border-2 border-[hsl(var(--gold-medium))] rounded-full mb-6 opacity-60">
+              <Camera className="w-6 h-6 text-[hsl(var(--gold-dark))]" />
             </div>
-
-            {/* IMAGEN PRINCIPAL */}
-            {/* object-contain: Muestra la foto ENTERA sin recortar nada */}
-            {/* z-10: Asegura que esté por encima del fondo borroso */}
-            <img
-              key={`img-${currentIndex}`}
-              src={images[currentIndex]}
-              alt={`Galería ${currentIndex + 1}`}
-              className="relative w-full h-full object-contain z-10 transition-all duration-500"
-            />
+            
+            <h2 className="font-dancing text-5xl md:text-6xl text-[hsl(var(--primary))] mb-4 drop-shadow-sm">
+              Nuestros Momentos
+            </h2>
+            <p className="font-serif text-lg text-muted-foreground italic">
+              "Recuerdos que construyen nuestra historia"
+            </p>
           </div>
 
-          {/* Navigation Buttons */}
-          <Button
-            onClick={previousImage}
-            variant="secondary"
-            size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg hover:scale-110 transition-transform bg-card/90 backdrop-blur-sm z-20"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
+          {/* Marco de la Foto Principal */}
+          <div className="relative max-w-4xl mx-auto group">
+            
+            {/* Decoración de fondo (Papel apilado) */}
+            <div className="absolute top-2 left-2 right-[-10px] bottom-[-10px] bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] opacity-40 rounded-xl -rotate-1" />
+            
+            {/* Marco Dorado Externo */}
+            <div className="relative bg-[hsl(var(--card))] p-3 md:p-4 rounded-xl shadow-[var(--shadow-card)] border border-[hsl(var(--gold-light))]">
+              
+              {/* Marco Dorado Interno (Foil) */}
+              <div className="relative rounded-lg overflow-hidden border-2" style={{ borderColor: 'hsl(var(--gold-medium))' }}>
+                <div className="aspect-[4/3] md:aspect-[16/9] relative bg-stone-100">
+                  
+                  {/* Imagen con efecto suave */}
+                  <img
+                    src={images[currentIndex]}
+                    alt={`Momento ${currentIndex + 1}`}
+                    className="w-full h-full object-contain bg-stone-200/50"
+                  />
+                  
+                  {/* Textura de ruido sobre la foto para efecto vintage */}
+                  <div className="absolute inset-0 opacity-[0.08] pointer-events-none mix-blend-overlay"
+                       style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} 
+                  />
+                </div>
+              </div>
 
-          <Button
-            onClick={nextImage}
-            variant="secondary"
-            size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg hover:scale-110 transition-transform bg-card/90 backdrop-blur-sm z-20"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </Button>
-
-          {/* Indicators */}
-          <div className="flex justify-center gap-2 mt-6">
-            {images.map((_, index) => (
+              {/* Botones de Navegación (Estilo Joya) */}
               <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? "w-8 bg-primary"
-                    : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                }`}
-              />
-            ))}
+                onClick={previousImage}
+                className="absolute left-[-20px] md:left-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform z-20 text-[hsl(var(--gold-dark))]"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={nextImage}
+                className="absolute right-[-20px] md:right-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform z-20 text-[hsl(var(--gold-dark))]"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Indicadores estilo puntos de tinta */}
+            <div className="flex justify-center gap-3 mt-8">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`transition-all duration-500 rounded-full border border-[hsl(var(--gold-medium))] ${
+                    index === currentIndex
+                      ? "w-3 h-3 bg-[hsl(var(--gold-dark))]"
+                      : "w-2 h-2 bg-transparent hover:bg-[hsl(var(--gold-light))]"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -2,65 +2,38 @@ import { Music } from "lucide-react";
 import { Button } from "./ui/button";
 
 const SongRequest = () => {
-  // EDITAR: URL de tu Google Form para sugerencias de canciones
-  // Para obtener la URL:
-  // 1. Crea un Google Form en https://forms.google.com
-  // 2. Haz clic en "Enviar" > obtén el link
-  const songRequestFormUrl = "https://docs.google.com/forms/d/e/YOUR_SONG_FORM_ID/viewform";
-
-  const handleOpenForm = () => {
-    window.open(songRequestFormUrl, "_blank");
-  };
+  const songRequestFormUrl = "https://docs.google.com/forms/..."; // Tu URL
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-accent/10">
-      <div className="max-w-3xl mx-auto text-center">
-        <div className="animate-fade-in">
-          <div className="inline-block p-4 bg-primary/10 rounded-full mb-6 animate-float">
-            <Music className="w-12 h-12 text-primary" />
-          </div>
+    <section className="py-20 px-4">
+      <div className="max-w-3xl mx-auto">
+        <div className="paper-texture bg-card rounded-xl p-8 md:p-12 shadow-md border-t-4 border-[hsl(var(--gold-medium))] text-center relative overflow-hidden">
           
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Sugerí tu Canción
-          </h2>
-          
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            ¿Qué canción no puede faltar en nuestra fiesta? Ayudanos a crear la mejor 
-            playlist para celebrar este día inolvidable. ¡Queremos que todos bailen!
-          </p>
+          <div className="gold-border-inset opacity-40"></div>
 
-          <div className="animate-scale-in">
+          {/* Icono Musical Flotante */}
+          <div className="absolute top-[-20px] right-[-20px] text-[hsl(var(--gold-light))] opacity-10 rotate-12">
+            <Music size={150} />
+          </div>
+
+          <div className="relative z-10">
+            <Music className="w-10 h-10 mx-auto mb-6 text-[hsl(var(--gold-dark))]" />
+            
+            <h2 className="font-dancing text-4xl md:text-5xl text-[hsl(var(--foreground))] mb-6">
+              ¡Que no pare la música!
+            </h2>
+            
+            <p className="font-serif text-lg text-muted-foreground mb-8 max-w-lg mx-auto">
+              Ayúdanos a armar la playlist perfecta. ¿Qué canción te haría salir corriendo a la pista de baile?
+            </p>
+
             <Button
-              onClick={handleOpenForm}
-              size="lg"
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all text-foreground font-medium shadow-lg hover:shadow-xl hover:scale-105"
+              onClick={() => window.open(songRequestFormUrl, "_blank")}
+              variant="outline"
+              className="border-[hsl(var(--gold-medium))] text-[hsl(var(--gold-dark))] hover:bg-[hsl(var(--gold-light))] hover:text-white font-serif uppercase tracking-widest px-8 py-6 rounded-sm transition-all"
             >
-              <Music className="mr-2 h-5 w-5" />
-              Recomendar Canción
+              Sugerir Canción
             </Button>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 bg-card/50 backdrop-blur-sm rounded-xl border border-border">
-              <div className="text-3xl mb-2">🎵</div>
-              <p className="text-sm text-muted-foreground">
-                Canciones románticas para el baile
-              </p>
-            </div>
-            
-            <div className="p-6 bg-card/50 backdrop-blur-sm rounded-xl border border-border">
-              <div className="text-3xl mb-2">🎉</div>
-              <p className="text-sm text-muted-foreground">
-                Temas para animar la pista
-              </p>
-            </div>
-            
-            <div className="p-6 bg-card/50 backdrop-blur-sm rounded-xl border border-border">
-              <div className="text-3xl mb-2">💫</div>
-              <p className="text-sm text-muted-foreground">
-                Clásicos que todos conocen
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -69,3 +42,5 @@ const SongRequest = () => {
 };
 
 export default SongRequest;
+
+
