@@ -17,8 +17,8 @@ const Hero = () => {
         <Heart className="w-16 h-16 mx-auto mb-8 text-primary animate-pulse-soft" />
         
         {/* EDITAR: Nombres de los novios */}
-        <h1 className="font-serif text-6xl md:text-8xl font-bold text-foreground mb-4">
-          Ana & Carlos
+        <h1 className="font-dancing text-6xl md:text-8xl font-bold text-foreground mb-4">
+          Ale & carla
         </h1>
         
         <div className="flex items-center justify-center gap-4 mb-8">
@@ -28,13 +28,13 @@ const Hero = () => {
         </div>
         
         {/* EDITAR: Fecha del casamiento */}
-        <p className="text-2xl md:text-3xl text-foreground mb-2 font-serif">
-          15 de Junio, 2025
+        <p className="text-2xl md:text-3xl text-foreground mb-2 font-dancing">
+          15 de Diciembre, 2025
         </p>
         
         {/* EDITAR: Lugar del evento */}
         <p className="text-xl md:text-2xl text-muted-foreground font-light">
-          Salón Los Jardines, Buenos Aires
+          Club Nautico Mar del Plata, Buenos Aires, Argentina
         </p>
         
         <div className="mt-12 animate-float">

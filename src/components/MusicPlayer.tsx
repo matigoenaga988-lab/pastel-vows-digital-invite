@@ -4,17 +4,18 @@ import { Button } from "./ui/button";
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef(null);
 
-  // EDITAR: URL de tu canción de fondo
-  // Puedes usar una URL directa de un archivo MP3
-  // Ejemplo: "https://example.com/musica-boda.mp3"
-  // O subir el archivo a tu proyecto en /public/music.mp3
-  const musicUrl = "/music/wedding-song.mp3";
+  // ---------------------------------------------------------
+  // PASO IMPORTANTE:
+  // 1. Pon tu archivo .mp3 dentro de la carpeta 'public' de tu proyecto.
+  // 2. Escribe aquí el nombre exacto (ej: "/mi-musica.mp3")
+  // ---------------------------------------------------------
+  const musicUrl = "/cancion.mp3"; 
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.3; // Volumen al 30%
+      audioRef.current.volume = 0.3; // Volumen inicial bajo
     }
   }, []);
 
@@ -24,7 +25,7 @@ const MusicPlayer = () => {
         audioRef.current.pause();
       } else {
         audioRef.current.play().catch((error) => {
-          console.log("Error al reproducir:", error);
+          console.error("Error al reproducir. Verifica que el nombre del archivo en 'public' coincida con musicUrl.", error);
         });
       }
       setIsPlaying(!isPlaying);
@@ -33,13 +34,12 @@ const MusicPlayer = () => {
 
   return (
     <>
-      {/* Audio element */}
       <audio ref={audioRef} loop>
         <source src={musicUrl} type="audio/mpeg" />
-        Tu navegador no soporta el elemento de audio.
+        Tu navegador no soporta audio.
       </audio>
 
-      {/* Floating Music Button */}
+      {/* Botón flotante (Igual que antes) */}
       <div className="fixed bottom-8 right-8 z-50 animate-fade-in">
         <Button
           onClick={togglePlay}
@@ -53,12 +53,10 @@ const MusicPlayer = () => {
           )}
         </Button>
         
-        {/* Ripple effect when playing */}
         {isPlaying && (
           <div className="absolute inset-0 rounded-full animate-ping bg-primary/30 pointer-events-none" />
         )}
         
-        {/* Music note animation */}
         {isPlaying && (
           <div className="absolute -top-2 -right-2 animate-bounce">
             <Music className="w-5 h-5 text-accent" />
@@ -66,11 +64,10 @@ const MusicPlayer = () => {
         )}
       </div>
 
-      {/* Tooltip */}
       {!isPlaying && (
         <div className="fixed bottom-28 right-8 z-40 animate-fade-in">
           <div className="bg-card/90 backdrop-blur-sm text-foreground px-4 py-2 rounded-lg shadow-lg text-sm whitespace-nowrap border border-border">
-            ¡Activá la música! 🎵
+            ¡Dale play! 🎵
           </div>
         </div>
       )}

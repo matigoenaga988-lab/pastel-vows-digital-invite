@@ -46,12 +46,12 @@ const ThankYou = () => {
               
               <div className="flex items-center justify-center gap-3">
                 <Mail className="w-5 h-5 text-primary" />
-                <span>contacto@nuestra-boda.com</span>
+                <span>Matigoenaga988@gmail.com</span>
               </div>
               
               <div className="flex items-center justify-center gap-3">
                 <Instagram className="w-5 h-5 text-primary" />
-                <span>@ana_y_carlos_boda</span>
+                <span>@Matuchimid</span>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ const ThankYou = () => {
           </div>
 
           <p className="mt-8 text-sm text-muted-foreground">
-            Con amor, Ana & Carlos 💕
+            Con amor, Ale & Carla 💕
           </p>
         </div>
       </div>

@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'serif'],
-        sans: ['Montserrat', 'sans-serif'],
+        dancing: ['"Dancing Script"', 'cursive'], 
+        // Clase 'font-maguntia'
+        maguntia: ['"UnifrakturMaguntia"', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
