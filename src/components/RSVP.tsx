@@ -122,25 +122,25 @@ const RSVP = () => {
             "Esperamos contar contigo en este día especial"
           </p>
 
-          {/* Botón con decoración adicional */}
+          {/* Wax Seal Button */}
           <div className="mt-8 pb-4">
             <a 
               href={googleFormUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block hover:-translate-y-1 transition-transform duration-300"
+              className="inline-block hover:-translate-y-1 transition-all duration-300"
             >
-              <Button 
-                size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 text-lg shadow-lg hover:shadow-xl rounded-full relative overflow-hidden group"
+              <button 
+                className="wax-seal px-12 py-6 text-lg font-serif font-semibold text-white rounded-full relative overflow-hidden group transition-all duration-300 hover:scale-105"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-3 drop-shadow-md">
+                  <Heart className="w-5 h-5 fill-white" />
                   Confirmar Asistencia
                   <ExternalLink className="w-5 h-5" />
                 </span>
-                {/* Efecto de brillo en hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              </Button>
+                {/* Shimmer effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              </button>
             </a>
           </div>
         </div>
