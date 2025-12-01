@@ -1,4 +1,4 @@
-import { CheckCircle2, ExternalLink } from "lucide-react";
+import { CheckCircle2, ExternalLink, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 
 const RSVP = () => {
@@ -42,6 +42,15 @@ const RSVP = () => {
             </a>
           </div>
           
+        </div>
+
+        {/* Detalles decorativos inferiores */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 opacity-30">
+          <div className="w-2 h-2 rounded-full bg-primary" />
+          <div className="w-2 h-2 rounded-full bg-accent" />
+          <div className="w-2 h-2 rounded-full bg-secondary" />
+          <div className="w-2 h-2 rounded-full bg-mint" />
+          <div className="w-2 h-2 rounded-full bg-primary" />
         </div>
       </div>
     </section>
