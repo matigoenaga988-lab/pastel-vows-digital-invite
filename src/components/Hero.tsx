@@ -18,7 +18,7 @@ const Hero = () => {
         
         {/* EDITAR: Nombres de los novios */}
         <h1 className="font-serif text-6xl md:text-8xl font-bold text-foreground mb-4">
-          Ana & Carlos
+          Ale & carla
         </h1>
         
         <div className="flex items-center justify-center gap-4 mb-8">
@@ -29,12 +29,12 @@ const Hero = () => {
         
         {/* EDITAR: Fecha del casamiento */}
         <p className="text-2xl md:text-3xl text-foreground mb-2 font-serif">
-          15 de Junio, 2025
+          15 de Diciembre, 2025
         </p>
         
         {/* EDITAR: Lugar del evento */}
         <p className="text-xl md:text-2xl text-muted-foreground font-light">
-          Salón Los Jardines, Buenos Aires
+          Club Nautico Mar del Plata, Buenos Aires, Argentina
         </p>
         
         <div className="mt-12 animate-float">

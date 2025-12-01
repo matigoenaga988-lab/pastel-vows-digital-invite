@@ -3,7 +3,8 @@ import { Calendar } from "lucide-react";
 
 const Countdown = () => {
   // EDITAR: Fecha del casamiento (formato: YYYY-MM-DD)
-  const weddingDate = new Date("2025-06-15T18:00:00");
+  // Nota: Asegúrate que esta fecha sea FUTURA para ver el contador.
+  const weddingDate = new Date("2025-12-15T18:00:00");
   
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -24,6 +25,9 @@ const Countdown = () => {
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
+      } else {
+        // Opcional: Detener el contador si la fecha ya pasó
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
 
@@ -33,10 +37,14 @@ const Countdown = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const TimeBox = ({ value, label }: { value: number; label: string }) => (
-    <div className="bg-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow animate-scale-in backdrop-blur-sm border border-border">
-      <div className="text-4xl md:text-5xl font-bold text-primary mb-2 font-serif">
-        {value.toString().padStart(2, "0")}
+  // --- AQUÍ ESTÁ LA CORRECCIÓN PRINCIPAL ---
+  const TimeBox = ({ value, label }) => (
+    <div className="bg-card rounded-2xl p-6 shadow-lg backdrop-blur-sm border border-border flex flex-col items-center justify-center min-h-32">
+      <div className="relative h-20 flex items-center justify-center">
+        {/* Eliminamos el array complejo y el transform. Mostramos el valor directo. */}
+        <div className="text-4xl md:text-5xl font-bold text-primary font-serif">
+          {value.toString().padStart(2, "0")}
+        </div>
       </div>
       <div className="text-sm md:text-base text-muted-foreground uppercase tracking-wider">
         {label}

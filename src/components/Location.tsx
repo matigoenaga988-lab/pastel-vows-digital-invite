@@ -3,14 +3,14 @@ import { Button } from "./ui/button";
 
 const Location = () => {
   // EDITAR: Coordenadas del lugar del evento (latitud, longitud)
-  const latitude = -34.6037;
-  const longitude = -58.3816;
+  const latitude = -38.04203853666166; 
+  const longitude = -57.54035183718755;
   
   // EDITAR: Dirección completa del evento
-  const address = "Av. del Libertador 1234, CABA, Buenos Aires, Argentina";
+  const address = "Club Náutico Mar del Plata, Buenos Aires, Argentina";
   
   // EDITAR: Nombre del lugar del evento
-  const venueName = "Salón Los Jardines";
+  const venueName = "Club Náutico Mar del Plata";
 
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
   const embedMapUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${latitude},${longitude}&zoom=15`;
@@ -43,16 +43,19 @@ const Location = () => {
         </div>
 
         <div className="animate-scale-in">
+
           {/* EDITAR: Reemplazar el iframe con tu propio embed de Google Maps */}
           {/* Para obtener el código de embed:
               1. Ve a Google Maps (https://maps.google.com)
               2. Busca tu ubicación
               3. Haz clic en "Compartir" > "Insertar un mapa"
               4. Copia el código iframe y reemplázalo aquí
-          */}
+          */
+          }
+          
           <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl mb-8 bg-muted">
             <iframe
-              src={embedMapUrl}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12568.825874685215!2d-57.55835484458007!3d-38.0422752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9584ddc3230929ff%3A0xc4e0191400f4cec1!2sClub%20N%C3%A1utico%20Mar%20del%20Plata!5e0!3m2!1ses-419!2sar!4v1764202297747!5m2!1ses-419!2sar"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -61,20 +64,8 @@ const Location = () => {
               referrerPolicy="no-referrer-when-downgrade"
               title="Ubicación del evento"
               className="absolute inset-0"
+              
             />
-            
-            {/* Overlay placeholder si no hay API key */}
-            <div className="absolute inset-0 flex items-center justify-center bg-muted/90 backdrop-blur-sm">
-              <div className="text-center p-8">
-                <MapPin className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-                <p className="text-muted-foreground mb-4">
-                  Reemplaza este contenedor con tu mapa de Google Maps
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Ver instrucciones en el código (componente Location.tsx)
-                </p>
-              </div>
-            </div>
           </div>
 
           <div className="text-center">

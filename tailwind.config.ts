@@ -14,8 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'serif'],
-        sans: ['Montserrat', 'sans-serif'],
+        boda: ['"Great Vibes"', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",

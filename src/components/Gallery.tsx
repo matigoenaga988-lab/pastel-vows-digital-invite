@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { Button } from "./ui/button";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
+import gallery1 from "@/assets/gallery1.jpeg";
+import gallery2 from "@/assets/gallery2.jpeg";
+import gallery3 from "@/assets/gallery3.jpeg";
 
 const Gallery = () => {
-  // EDITAR: Agregar o reemplazar las imágenes importadas arriba y en este array
   const images = [gallery1, gallery2, gallery3];
   
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,7 +24,6 @@ const Gallery = () => {
         <div className="text-center mb-12 animate-fade-in">
           <Camera className="w-12 h-12 mx-auto mb-6 text-primary" />
           
-          {/* EDITAR: Título de la galería */}
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
             Nuestros Momentos
           </h2>
@@ -37,15 +35,31 @@ const Gallery = () => {
 
         {/* Slider */}
         <div className="relative max-w-4xl mx-auto animate-scale-in">
-          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+          
+          {/* Contenedor de la imagen */}
+          {/* Volví al aspect-video o 3/2 para mantener la forma del marco consistente */}
+          <div className="relative aspect-video md:aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl bg-black/5">
+            
+            {/* TRUCO DE DISEÑO: Imagen de fondo borrosa */}
+            {/* Esto rellena los espacios vacíos a los costados de la foto vertical */}
+            <div className="absolute inset-0">
+                <img
+                  key={`bg-${currentIndex}`} // key ayuda a reiniciar la animación
+                  src={images[currentIndex]}
+                  alt="fondo borroso"
+                  className="w-full h-full object-cover blur-2xl opacity-50 scale-110"
+                />
+            </div>
+
+            {/* IMAGEN PRINCIPAL */}
+            {/* object-contain: Muestra la foto ENTERA sin recortar nada */}
+            {/* z-10: Asegura que esté por encima del fondo borroso */}
             <img
+              key={`img-${currentIndex}`}
               src={images[currentIndex]}
               alt={`Galería ${currentIndex + 1}`}
-              className="w-full h-full object-cover transition-all duration-500"
+              className="relative w-full h-full object-contain z-10 transition-all duration-500"
             />
-            
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent pointer-events-none" />
           </div>
 
           {/* Navigation Buttons */}
@@ -53,7 +67,7 @@ const Gallery = () => {
             onClick={previousImage}
             variant="secondary"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg hover:scale-110 transition-transform bg-card/90 backdrop-blur-sm"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg hover:scale-110 transition-transform bg-card/90 backdrop-blur-sm z-20"
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
@@ -62,7 +76,7 @@ const Gallery = () => {
             onClick={nextImage}
             variant="secondary"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg hover:scale-110 transition-transform bg-card/90 backdrop-blur-sm"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full shadow-lg hover:scale-110 transition-transform bg-card/90 backdrop-blur-sm z-20"
           >
             <ChevronRight className="h-6 w-6" />
           </Button>

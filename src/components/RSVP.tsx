@@ -1,69 +1,60 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ExternalLink } from "lucide-react";
+import { Button } from "./ui/button";
 
 const RSVP = () => {
-  // EDITAR: URL de tu Google Form para confirmación de asistencia
-  // Para obtener la URL:
-  // 1. Crea un Google Form en https://forms.google.com
-  // 2. Haz clic en "Enviar" > ícono de "<>"
-  // 3. Copia la URL del src del iframe
-  const googleFormUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true";
+  // Tu URL
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScZLz2EKKo6Ods7P0TH3YBhGMR-5O6yPkdAo1icaCpzLZDJCw/viewform";
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in">
+    // CAMBIO 1: Fondo de la sección más oscuro (bg-stone-100 o secondary/30) para que la tarjeta blanca resalte
+    <section className="py-24 px-4 bg-secondary/30"> 
+      
+      {/* CAMBIO 2: La tarjeta ahora tiene 'bg-background' (blanco usualmente) y una sombra muy fuerte (shadow-2xl) */}
+      <div className="relative max-w-2xl mx-auto bg-background p-8 md:p-12 rounded-xl shadow-2xl animate-scale-in border border-border">
+        
+        {/* CAMBIO 3: Marco decorativo MÁS GRUESO y visible */}
+        {/* border-2 (grosor) y border-primary (color solido, sin transparencia por ahora) */}
+        <div className="absolute inset-3 border-2 border-primary rounded-lg pointer-events-none opacity-50" />
+        
+        {/* Esquinas decorativas extra para asegurar que se vea el estilo "Invitación" */}
+        <div className="absolute top-3 left-3 w-4 h-4 border-t-4 border-l-4 border-primary pointer-events-none" />
+        <div className="absolute top-3 right-3 w-4 h-4 border-t-4 border-r-4 border-primary pointer-events-none" />
+        <div className="absolute bottom-3 left-3 w-4 h-4 border-b-4 border-l-4 border-primary pointer-events-none" />
+        <div className="absolute bottom-3 right-3 w-4 h-4 border-b-4 border-r-4 border-primary pointer-events-none" />
+
+        <div className="relative z-10 text-center pt-4">
           <CheckCircle2 className="w-12 h-12 mx-auto mb-6 text-primary" />
           
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
             Confirmación de Asistencia
           </h2>
           
-          <p className="text-lg text-muted-foreground mb-2">
-            Por favor, confirmanos tu asistencia antes del 1 de Mayo
+          <div className="w-16 h-1 bg-primary mx-auto my-6 rounded-full"></div>
+          
+          <p className="text-lg text-muted-foreground mb-8">
+            Por favor, confirmanos tu asistencia antes del 1 de Mayo.
           </p>
           
-          <p className="text-foreground font-medium">
-            ¡Tu presencia es muy importante para nosotros!
+          <p className="font-medium text-foreground mb-8 italic">
+            "Esperamos contar contigo en este día especial"
           </p>
-        </div>
 
-        <div className="animate-scale-in">
-          <div className="bg-card rounded-2xl shadow-2xl overflow-hidden border border-border">
-            {/* EDITAR: Reemplazar con tu URL de Google Form */}
-            <iframe
-              src={googleFormUrl}
-              width="100%"
-              height="800"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="Formulario de confirmación RSVP"
-              className="w-full"
+          <div className="mt-8 pb-4">
+            <a 
+              href={googleFormUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block hover:-translate-y-1 transition-transform duration-300"
             >
-              Cargando formulario...
-            </iframe>
-            
-            {/* Mensaje de fallback si el form no carga */}
-            <div className="p-8 text-center bg-muted/50">
-              <p className="text-muted-foreground text-sm">
-                Si no ves el formulario, puedes{" "}
-                <a
-                  href={googleFormUrl.replace("?embedded=true", "")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline font-medium"
-                >
-                  abrirlo en una nueva pestaña
-                </a>
-              </p>
-            </div>
+              <Button 
+                size="lg" 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 text-lg shadow-lg hover:shadow-xl rounded-full"
+              >
+                Confirmar Asistencia
+                <ExternalLink className="w-5 h-5 ml-2" />
+              </Button>
+            </a>
           </div>
-        </div>
-
-        <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            Si tenés alguna duda, no dudes en contactarnos
-          </p>
         </div>
       </div>
     </section>
