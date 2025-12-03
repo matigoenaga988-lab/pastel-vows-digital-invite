@@ -14,10 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Fuentes personalizadas
         dancing: ['"Dancing Script"', 'cursive'], 
         maguntia: ['"UnifrakturMaguntia"', 'cursive'],
-        serif: ['"Cormorant Garamond"', 'serif'], // Asegúrate de tener esta o usar una default
+        serif: ['"Cormorant Garamond"', 'serif'],
+        // Fuente sugerida por Artisan Deco
+        artisan: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -45,10 +46,6 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        mint: {
-          DEFAULT: "hsl(var(--mint))",
-          foreground: "hsl(var(--mint-foreground))",
-        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -57,11 +54,28 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Nuevos colores para el tema Vintage
+        // Paleta Antigua (Mantenida por compatibilidad)
         gold: {
           light: "hsl(var(--gold-light))",
           medium: "hsl(var(--gold-medium))",
           dark: "hsl(var(--gold-dark))",
+        },
+        mint: {
+          DEFAULT: "hsl(var(--mint))",
+          foreground: "hsl(var(--mint-foreground))",
+        },
+        // Nueva Paleta Artisan Deco (Acceso directo por clases utilitarias)
+        artisan: {
+          cream: "#FDFBF7",
+          gold: {
+            light: "#F9E79F",
+            main: "#D4AF37",
+            dark: "#AA8C2C",
+          },
+          green: {
+            sage: "#9CAF88",
+            soft: "#B8C9B8",
+          }
         },
         floral: {
           pink: "hsl(var(--floral-pink))",
@@ -70,11 +84,7 @@ export default {
           green: "hsl(var(--floral-green))",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
+      // ... existing code ...
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

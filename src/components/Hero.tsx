@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import heroImage from "../assets/hero-wedding.jpg";
+
 const Hero = () => {
   // Usamos una imagen de stock de alta calidad de un arco de bodas para asegurar que se vea perfecto
 

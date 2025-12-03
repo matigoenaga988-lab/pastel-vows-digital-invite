@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Camera } from "lucide-react";
-import { Button } from "./ui/button";
+// Asegúrate de que la ruta sea correcta según donde guardaste la imagen subida
+import decorationBranch from "@/assets/gallery4.png"; 
 import gallery1 from "@/assets/gallery1.jpeg";
 import gallery2 from "@/assets/gallery2.jpeg";
 import gallery3 from "@/assets/gallery3.jpeg";
@@ -18,14 +19,15 @@ const Gallery = () => {
   };
 
   return (
-    <section className="py-20 px-4 relative">
+    <section className="py-24 px-4 relative overflow-hidden">
       <div className="max-w-5xl mx-auto">
         
-        {/* Contenedor estilo 'Álbum' */}
+        {/* Contenedor Principal */}
         <div className="relative animate-fade-in">
           
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center p-3 border-2 border-[hsl(var(--gold-medium))] rounded-full mb-6 opacity-60">
+          {/* Encabezado */}
+          <div className="text-center mb-16 relative z-10">
+            <div className="inline-flex items-center justify-center p-3 border-2 border-[hsl(var(--gold-medium))] rounded-full mb-6 opacity-60 bg-[hsl(var(--card))]">
               <Camera className="w-6 h-6 text-[hsl(var(--gold-dark))]" />
             </div>
             
@@ -37,24 +39,43 @@ const Gallery = () => {
             </p>
           </div>
 
-          {/* Marco de la Foto Principal */}
+          {/* Área del Marco y Foto */}
           <div className="relative max-w-4xl mx-auto group">
             
+            {/* --- DECORACIÓN BOTÁNICA 1: Esquina Superior Izquierda --- */}
+            <div className="absolute -top-16 -left-12 md:-left-20 w-40 md:w-56 z-0 pointer-events-none opacity-90 transition-transform duration-1000 group-hover:-translate-y-2 group-hover:-translate-x-2">
+               <img 
+                 src={decorationBranch} 
+                 alt="" 
+                 className="w-full h-auto object-contain -rotate-12 mix-blend-multiply filter sepia-[0.2]" 
+               />
+            </div>
+
+            {/* --- DECORACIÓN BOTÁNICA 2: Esquina Inferior Derecha (Rotada) --- */}
+            <div className="absolute -bottom-16 -right-12 md:-right-20 w-40 md:w-56 z-0 pointer-events-none opacity-90 transition-transform duration-1000 group-hover:translate-y-2 group-hover:translate-x-2">
+               <img 
+                 src={decorationBranch} 
+                 alt="" 
+                 className="w-full h-auto object-contain rotate-[168deg] mix-blend-multiply filter sepia-[0.2]" 
+               />
+            </div>
+
             {/* Decoración de fondo (Papel apilado) */}
-            <div className="absolute top-2 left-2 right-[-10px] bottom-[-10px] bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] opacity-40 rounded-xl -rotate-1" />
+            <div className="absolute top-2 left-2 right-[-10px] bottom-[-10px] bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] opacity-40 rounded-xl -rotate-1 z-0" />
             
-            {/* Marco Dorado Externo */}
-            <div className="relative bg-[hsl(var(--card))] p-3 md:p-4 rounded-xl shadow-[var(--shadow-card)] border border-[hsl(var(--gold-light))]">
+            {/* Marco Dorado Externo (Contenedor Principal de la Foto) */}
+            <div className="relative z-10 bg-[hsl(var(--card))] p-3 md:p-4 rounded-xl shadow-[var(--shadow-card)] border border-[hsl(var(--gold-light))]">
               
               {/* Marco Dorado Interno (Foil) */}
               <div className="relative rounded-lg overflow-hidden border-2" style={{ borderColor: 'hsl(var(--gold-medium))' }}>
                 <div className="aspect-[4/3] md:aspect-[16/9] relative bg-stone-100">
                   
-                  {/* Imagen con efecto suave */}
+                  {/* Imagen con transición suave */}
                   <img
+                    key={currentIndex} // Key fuerza la animación al cambiar de foto
                     src={images[currentIndex]}
                     alt={`Momento ${currentIndex + 1}`}
-                    className="w-full h-full object-contain bg-stone-200/50"
+                    className="w-full h-full object-contain bg-stone-200/50 animate-fade-in"
                   />
                   
                   {/* Textura de ruido sobre la foto para efecto vintage */}
@@ -67,21 +88,23 @@ const Gallery = () => {
               {/* Botones de Navegación (Estilo Joya) */}
               <button
                 onClick={previousImage}
-                className="absolute left-[-20px] md:left-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform z-20 text-[hsl(var(--gold-dark))]"
+                className="absolute left-[-20px] md:left-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:bg-[hsl(var(--gold-light))] transition-all z-20 text-[hsl(var(--gold-dark))]"
+                aria-label="Imagen anterior"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
               <button
                 onClick={nextImage}
-                className="absolute right-[-20px] md:right-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform z-20 text-[hsl(var(--gold-dark))]"
+                className="absolute right-[-20px] md:right-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 bg-[hsl(var(--card))] border border-[hsl(var(--gold-medium))] rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:bg-[hsl(var(--gold-light))] transition-all z-20 text-[hsl(var(--gold-dark))]"
+                aria-label="Siguiente imagen"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
             </div>
 
             {/* Indicadores estilo puntos de tinta */}
-            <div className="flex justify-center gap-3 mt-8">
+            <div className="flex justify-center gap-3 mt-8 relative z-10">
               {images.map((_, index) => (
                 <button
                   key={index}
@@ -91,6 +114,7 @@ const Gallery = () => {
                       ? "w-3 h-3 bg-[hsl(var(--gold-dark))]"
                       : "w-2 h-2 bg-transparent hover:bg-[hsl(var(--gold-light))]"
                   }`}
+                  aria-label={`Ir a imagen ${index + 1}`}
                 />
               ))}
             </div>
